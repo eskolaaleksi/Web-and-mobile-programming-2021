@@ -15,7 +15,7 @@ class App extends React.Component {
 
   componentDidMount() {
 		axios
-			.get('http://localhost:3001/api/reminders')
+			.get('/api/reminders')
 			.then(response => {
 				this.setState({ reminders: response.data})
 			})
@@ -33,7 +33,7 @@ class App extends React.Component {
       timestamp: new Date(this.state.newDate)
     }
     axios
-      .post('http://localhost:3001/api/reminders', reminderObject)
+      .post('/api/reminders', reminderObject)
       .then(response => {
         this.setState({
           reminders: this.state.reminders.concat(response.data),
@@ -48,7 +48,7 @@ class App extends React.Component {
 		return () => {
       if(window.confirm("Do you really want to delete this?")) {
         axios
-          .delete(`http://localhost:3001/api/reminders/${id}`)
+          .delete(`/api/reminders/${id}`)
           .then(response => {
             this.setState({
               reminders: this.state.reminders.filter(reminder => id !== reminder.id)

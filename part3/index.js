@@ -4,9 +4,11 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 app.use(cors())
-
+app.use(express.static('build'))
 app.use(bodyParser.json())
   
+// Heroku url https://gentle-waters-58951.herokuapp.com/
+
   let reminders =[
     {
         name: "Buy some eggs",
